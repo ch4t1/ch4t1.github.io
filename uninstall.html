@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You removed ChatNest — we'd love your feedback</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a12;
+      color: #f0f0f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #13131e;
+      border: 1px solid #252538;
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .emoji { font-size: 3rem; margin-bottom: 1rem; }
+    h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .sub { color: #8888aa; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6; }
+    .options { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; text-align: left; }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #252538;
+      background: #0f0f1a;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      font-size: 0.9rem;
+      color: #c0c0d8;
+    }
+    .option:hover { border-color: #7c3aed; background: rgba(124,58,237,0.06); }
+    .option.selected { border-color: #7c3aed; background: rgba(124,58,237,0.1); color: #e0d0ff; }
+    .option input[type="radio"] { accent-color: #7c3aed; width: 16px; height: 16px; flex-shrink: 0; }
+    textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #252538;
+      background: #0f0f1a;
+      color: #f0f0f5;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 90px;
+      margin-bottom: 1.25rem;
+    }
+    textarea::placeholder { color: #555570; }
+    textarea:focus { outline: none; border-color: #7c3aed; }
+    .btn-row { display: flex; gap: 0.75rem; justify-content: center; }
+    .btn-primary {
+      background: #7c3aed;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #6d28d9; }
+    .btn-secondary {
+      background: none;
+      color: #8888aa;
+      border: 1px solid #252538;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .btn-secondary:hover { color: #f0f0f5; border-color: #444460; }
+    .thanks { display: none; }
+    .thanks .emoji { font-size: 2.5rem; }
+    .thanks h1 { margin-bottom: 0.5rem; }
+    .reinstall-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: #a78bfa;
+      font-size: 0.9rem;
+    }
+    .reinstall-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Survey -->
+    <div id="survey">
+      <div class="emoji">😢</div>
+      <h1>Sorry to see you go</h1>
+      <p class="sub">Mind telling us why? Your feedback helps us improve ChatNest for everyone.</p>
+
+      <div class="options">
+        <label class="option">
+          <input type="radio" name="reason" value="not_useful"> It wasn't useful for me
+        </label>
+        <label class="option">
+          <input type="radio" name="reason" value="too_complex"> Too complex / hard to use
+        </label>
+        <label class="option">
+          <input type="radio" name="reason" value="not_working"> It didn't work properly
+        </label>
+        <label class="option">
+          <input type="radio" name="reason" value="privacy"> Privacy concerns
+        </label>
+        <label class="option">
+          <input type="radio" name="reason" value="found_better"> Found a better alternative
+        </label>
+        <label class="option">
+          <input type="radio" name="reason" value="other"> Other
+        </label>
+      </div>
+
+      <textarea id="comment" placeholder="Anything else you'd like to share? (optional)"></textarea>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="submitFeedback()">Send Feedback</button>
+        <a class="btn-secondary" href="https://ch4t1.github.io">Skip</a>
+      </div>
+    </div>
+
+    <!-- Thank you -->
+    <div class="thanks" id="thanks">
+      <div class="emoji">🙏</div>
+      <h1>Thank you!</h1>
+      <p class="sub">Your feedback means a lot. We'll use it to make ChatNest better.</p>
+      <a class="reinstall-link" href="https://chromewebstore.google.com/detail/bphdbonieamdappjndenhelenebmjdib">
+        Changed your mind? Reinstall ChatNest →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Highlight selected option
+    document.querySelectorAll('.option input').forEach(input => {
+      input.addEventListener('change', () => {
+        document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        input.closest('.option').classList.add('selected');
+      });
+    });
+
+    function submitFeedback() {
+      const reason = document.querySelector('input[name="reason"]:checked')?.value || 'not_selected';
+      const comment = document.getElementById('comment').value.trim();
+
+      // Send to Google Form (pre-filled)
+      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdhIVIhgZ5CTx9RgefgpU2-K878uQTkxx1A81K6CyrVx_s4Jg/formResponse';
+      const body = new FormData();
+      body.append('entry.uninstall_reason', reason);   // update field IDs after checking form
+      body.append('entry.uninstall_comment', comment);
+
+      fetch(formUrl, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
+
+      // Show thanks regardless
+      document.getElementById('survey').style.display = 'none';
+      document.getElementById('thanks').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
