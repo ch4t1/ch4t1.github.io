@@ -542,6 +542,18 @@
       items: [{ priceId: priceId, quantity: 1 }]
     });
   }
+
+  // ── Theme toggle ──────────────────────────────────────────────────────
+  const html = document.documentElement;
+  const saved = localStorage.getItem('chatnest-theme') ||
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  html.dataset.theme = saved;
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const next = html.dataset.theme === 'light' ? 'dark' : 'light';
+    html.dataset.theme = next;
+    localStorage.setItem('chatnest-theme', next);
+  });
 </script>
 </body>
 </html>
