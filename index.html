@@ -22,6 +22,28 @@
       --muted: #8888aa;
     }
 
+    [data-theme="light"] {
+      --bg: #f8f8fc;
+      --bg2: #ffffff;
+      --bg3: #ededf5;
+      --border: #dddde8;
+      --text: #1a1a2e;
+      --muted: #5a5a7a;
+    }
+
+    [data-theme="light"] body::before {
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(124,58,237,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(99,102,241,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 50% 100%, rgba(124,58,237,0.04) 0%, transparent 60%);
+    }
+
+    [data-theme="light"] h1 {
+      background: linear-gradient(135deg, #1a1a2e 40%, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
@@ -54,9 +76,10 @@
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      background: rgba(10,10,18,0.88);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
       backdrop-filter: blur(12px);
       z-index: 100;
+      transition: background 0.3s;
     }
     .nav-logo {
       display: flex;
@@ -66,6 +89,11 @@
       font-size: 1.1rem;
     }
     .nav-logo img { width: 36px; height: 36px; border-radius: 8px; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
     .nav-cta {
       background: var(--purple);
       color: #fff;
@@ -76,6 +104,27 @@
       transition: background 0.2s;
     }
     .nav-cta:hover { background: var(--purple-dark); }
+
+    /* Theme toggle */
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--purple-light); color: var(--purple-light); }
+    .theme-toggle .icon-sun  { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun  { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
     /* HERO */
     .hero {
@@ -331,9 +380,15 @@
     <img src="icon128.png" alt="ChatNest" />
     ChatNest
   </div>
-  <a href="https://chromewebstore.google.com/detail/bphdbonieamdappjndenhelenebmjdib" class="nav-cta" target="_blank">
-    Add to Browser — Free
-  </a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="https://chromewebstore.google.com/detail/bphdbonieamdappjndenhelenebmjdib" class="nav-cta" target="_blank">
+      Add to Browser — Free
+    </a>
+  </div>
 </nav>
 
 <!-- HERO -->
