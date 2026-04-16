@@ -4,151 +4,231 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You removed ChatNest — we'd love your feedback</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: #0a0a12;
-      color: #f0f0f5;
+      font-family: 'DM Sans', sans-serif;
+      background: #0c0905;
+      color: #f0e8dc;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 2rem;
+      position: relative;
+      overflow: hidden;
     }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
     .card {
-      background: #13131e;
-      border: 1px solid #252538;
-      border-radius: 16px;
+      background: #141009;
+      border: 1px solid #2c2015;
+      border-radius: 20px;
       padding: 2.5rem;
-      max-width: 520px;
+      max-width: 500px;
       width: 100%;
       text-align: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
     }
-    .emoji { font-size: 3rem; margin-bottom: 1rem; }
-    h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .sub { color: #8888aa; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6; }
-    .options { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; text-align: left; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.8rem;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #c4a882;
+    }
+
+    .emoji { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .sub {
+      color: #7a6550;
+      font-size: 0.9rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
     .option {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: 10px;
-      border: 1px solid #252538;
-      background: #0f0f1a;
+      border: 1px solid #2c2015;
+      background: #0c0905;
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
-      font-size: 0.9rem;
-      color: #c0c0d8;
+      font-size: 0.875rem;
+      color: #a08060;
     }
-    .option:hover { border-color: #7c3aed; background: rgba(124,58,237,0.06); }
-    .option.selected { border-color: #7c3aed; background: rgba(124,58,237,0.1); color: #e0d0ff; }
-    .option input[type="radio"] { accent-color: #7c3aed; width: 16px; height: 16px; flex-shrink: 0; }
+    .option:hover { border-color: rgba(249,115,22,0.35); background: rgba(249,115,22,0.04); }
+    .option.selected { border-color: #f97316; background: rgba(249,115,22,0.08); color: #f0e8dc; }
+    .option input[type="radio"] { accent-color: #f97316; width: 15px; height: 15px; flex-shrink: 0; }
+
     textarea {
       width: 100%;
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: 10px;
-      border: 1px solid #252538;
-      background: #0f0f1a;
-      color: #f0f0f5;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+      border: 1px solid #2c2015;
+      background: #0c0905;
+      color: #f0e8dc;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
       resize: vertical;
-      min-height: 90px;
-      margin-bottom: 1.25rem;
+      min-height: 80px;
+      margin-bottom: 1.2rem;
+      transition: border-color 0.2s;
     }
-    textarea::placeholder { color: #555570; }
-    textarea:focus { outline: none; border-color: #7c3aed; }
-    .btn-row { display: flex; gap: 0.75rem; justify-content: center; }
+    textarea::placeholder { color: #4a3520; }
+    textarea:focus { outline: none; border-color: rgba(249,115,22,0.4); }
+
+    .btn-row { display: flex; gap: 0.6rem; justify-content: center; }
+
     .btn-primary {
-      background: #7c3aed;
+      background: #f97316;
       color: #fff;
       border: none;
-      padding: 0.7rem 1.6rem;
-      border-radius: 8px;
+      padding: 0.65rem 1.5rem;
+      border-radius: 9px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.15s;
+      font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 4px 16px rgba(249,115,22,0.3);
     }
-    .btn-primary:hover { background: #6d28d9; }
+    .btn-primary:hover { background: #ea580c; transform: translateY(-1px); }
+
     .btn-secondary {
       background: none;
-      color: #8888aa;
-      border: 1px solid #252538;
-      padding: 0.7rem 1.4rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
+      color: #7a6550;
+      border: 1px solid #2c2015;
+      padding: 0.65rem 1.2rem;
+      border-radius: 9px;
+      font-size: 0.875rem;
       cursor: pointer;
       text-decoration: none;
       display: flex;
       align-items: center;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.15s;
     }
-    .btn-secondary:hover { color: #f0f0f5; border-color: #444460; }
+    .btn-secondary:hover { color: #f0e8dc; border-color: #4a3520; }
+
     .thanks { display: none; }
-    .thanks .emoji { font-size: 2.5rem; }
-    .thanks h1 { margin-bottom: 0.5rem; }
+
     .reinstall-link {
       display: inline-block;
       margin-top: 1.5rem;
-      color: #a78bfa;
-      font-size: 0.9rem;
+      color: #f97316;
+      font-size: 0.875rem;
+      transition: opacity 0.2s;
     }
-    .reinstall-link:hover { text-decoration: underline; }
+    .reinstall-link:hover { opacity: 0.8; text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="card">
+
     <!-- Survey -->
     <div id="survey">
-      <div class="emoji"></div>
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 128 128" fill="none">
+          <defs>
+            <linearGradient id="u1" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFB347"/><stop offset="100%" stop-color="#E8450A"/>
+            </linearGradient>
+            <linearGradient id="u2" x1="0" y1="0" x2="128" y2="60" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFCF6B"/><stop offset="100%" stop-color="#FF8C2A"/>
+            </linearGradient>
+          </defs>
+          <rect x="8" y="38" width="112" height="78" rx="10" fill="url(#u1)" opacity="0.75"/>
+          <path d="M8 38 L8 30 Q8 24 14 24 L44 24 Q50 24 53 30 L58 38 Z" fill="url(#u2)"/>
+          <rect x="8" y="38" width="112" height="76" rx="10" fill="url(#u2)"/>
+          <circle cx="64" cy="64" r="11" fill="white" opacity="0.95"/>
+          <g stroke="#FF7A1A" stroke-width="1.8" stroke-linecap="round">
+            <line x1="64" y1="57" x2="64" y2="71"/>
+            <line x1="57" y1="64" x2="71" y2="64"/>
+          </g>
+          <circle cx="64" cy="64" r="2.5" fill="#E8450A"/>
+          <g stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.9">
+            <line x1="59" y1="75" x2="59" y2="81"/>
+            <line x1="69" y1="75" x2="69" y2="81"/>
+            <line x1="59" y1="81" x2="69" y2="81"/>
+          </g>
+        </svg>
+        ChatNest
+      </div>
+
+      <span class="emoji">😢</span>
       <h1>Sorry to see you go</h1>
       <p class="sub">Mind telling us why? Your feedback helps us improve ChatNest for everyone.</p>
 
       <div class="options">
-        <label class="option">
-          <input type="radio" name="reason" value="not_useful"> It wasn't useful for me
-        </label>
-        <label class="option">
-          <input type="radio" name="reason" value="too_complex"> Too complex / hard to use
-        </label>
-        <label class="option">
-          <input type="radio" name="reason" value="not_working"> It didn't work properly
-        </label>
-        <label class="option">
-          <input type="radio" name="reason" value="privacy"> Privacy concerns
-        </label>
-        <label class="option">
-          <input type="radio" name="reason" value="found_better"> Found a better alternative
-        </label>
-        <label class="option">
-          <input type="radio" name="reason" value="other"> Other
-        </label>
+        <label class="option"><input type="radio" name="reason" value="not_useful"> It wasn't useful for me</label>
+        <label class="option"><input type="radio" name="reason" value="too_complex"> Too complex / hard to use</label>
+        <label class="option"><input type="radio" name="reason" value="not_working"> It didn't work properly</label>
+        <label class="option"><input type="radio" name="reason" value="privacy"> Privacy concerns</label>
+        <label class="option"><input type="radio" name="reason" value="found_better"> Found a better alternative</label>
+        <label class="option"><input type="radio" name="reason" value="other"> Other</label>
       </div>
 
       <textarea id="comment" placeholder="Anything else you'd like to share? (optional)"></textarea>
 
       <div class="btn-row">
         <button class="btn-primary" onclick="submitFeedback()">Send Feedback</button>
-        <a class="btn-secondary" href="https://ch4t1.github.io">Skip</a>
+        <a class="btn-secondary" href="https://chatnest.store">Skip</a>
       </div>
     </div>
 
     <!-- Thank you -->
     <div class="thanks" id="thanks">
-      <div class="emoji">🙏</div>
+      <span class="emoji">🙏</span>
       <h1>Thank you!</h1>
       <p class="sub">Your feedback means a lot. We'll use it to make ChatNest better.</p>
       <a class="reinstall-link" href="https://chromewebstore.google.com/detail/bphdbonieamdappjndenhelenebmjdib">
         Changed your mind? Reinstall ChatNest →
       </a>
     </div>
+
   </div>
 
   <script>
-    // Highlight selected option
     document.querySelectorAll('.option input').forEach(input => {
       input.addEventListener('change', () => {
         document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
@@ -159,16 +239,11 @@
     function submitFeedback() {
       const reason = document.querySelector('input[name="reason"]:checked')?.value || 'not_selected';
       const comment = document.getElementById('comment').value.trim();
-
-      // Send to Google Form (pre-filled)
       const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdhIVIhgZ5CTx9RgefgpU2-K878uQTkxx1A81K6CyrVx_s4Jg/formResponse';
       const body = new FormData();
-      body.append('entry.uninstall_reason', reason);   // update field IDs after checking form
+      body.append('entry.uninstall_reason', reason);
       body.append('entry.uninstall_comment', comment);
-
       fetch(formUrl, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
-
-      // Show thanks regardless
       document.getElementById('survey').style.display = 'none';
       document.getElementById('thanks').style.display = 'block';
     }
