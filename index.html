@@ -3,9 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChatNest — Organize Your AI Conversations</title>
-  <meta name="description" content="Stop losing your AI conversations. ChatNest adds folders, tags, and search to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek." />
-  <link rel="icon" href="icon128.png" type="image/png" />
+  <title>ChatNest — ChatGPT Folders, Tags & AI Conversation Organizer</title>
+  <meta name="description" content="Organize and save your AI chats with folders, tags, and instant search. ChatNest is a free Chrome extension that adds ChatGPT folders, Claude conversation organizer, and Gemini chat manager — all in one sidebar." />
+  <link rel="icon" href="https://chatnest.store/icon128.png" type="image/png" />
+  <link rel="apple-touch-icon" href="https://chatnest.store/icon128.png" />
+  <link rel="canonical" href="https://chatnest.store/" />
+
+  <!-- Open Graph (Facebook, LinkedIn, Discord) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://chatnest.store/" />
+  <meta property="og:title" content="ChatNest — ChatGPT Folders, Tags & AI Conversation Organizer" />
+  <meta property="og:description" content="Stop losing your AI chats. Add folders, tags, and instant search to ChatGPT, Claude, Gemini & 4 more platforms. Free Chrome extension." />
+  <meta property="og:image" content="https://chatnest.store/og-banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="ChatNest" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ChatNest — ChatGPT Folders, Tags & AI Chat Organizer" />
+  <meta name="twitter:description" content="Save and organize your AI conversations with folders, tags & search. Works with ChatGPT, Claude, Gemini & more. Free Chrome extension." />
+  <meta name="twitter:image" content="https://chatnest.store/og-banner.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ChatNest",
+    "description": "Browser extension that adds folders, tags, and instant search to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek.",
+    "url": "https://chatnest.store/",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome, Brave, Edge, Opera",
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "name": "Free"
+      },
+      {
+        "@type": "Offer",
+        "price": "3.99",
+        "priceCurrency": "USD",
+        "name": "Pro Monthly",
+        "billingIncrement": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "price": "19.99",
+        "priceCurrency": "USD",
+        "name": "Pro Yearly",
+        "billingIncrement": "P1Y"
+      }
+    ],
+    "screenshot": "https://chatnest.store/icon128.png",
+    "softwareVersion": "1.2.4",
+    "installUrl": "https://chromewebstore.google.com/detail/bphdbonieamdappjndenhelenebmjdib"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
@@ -563,8 +620,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="badge">⚡ Chrome Extension · 7 AI Platforms</div>
-  <h1>Stop Losing Your<br/>AI Conversations</h1>
-  <p class="hero-sub">ChatNest adds folders, tags, and instant search to ChatGPT, Claude, Gemini and more — right inside the sidebar. No tab switching. No new app.</p>
+  <h1>ChatGPT Folders & Tags —<br/>Organize Every AI Chat</h1>
+  <p class="hero-sub">Stop losing your AI conversations. ChatNest adds folders, tags, and instant search to ChatGPT, Claude, Gemini and more — save AI chats and find them instantly, right inside the sidebar.</p>
   <div class="hero-btns">
     <a href="https://chromewebstore.google.com/detail/bphdbonieamdappjndenhelenebmjdib" class="btn-primary" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -596,13 +653,13 @@
 <!-- FEATURES -->
 <section class="section">
   <p class="section-label fade-up">Features</p>
-  <h2 class="section-title fade-up">Everything your AI sidebar needs</h2>
-  <p class="section-sub fade-up">No more endless scrolling through hundreds of conversations.</p>
+  <h2 class="section-title fade-up">The AI conversation organizer you've been missing</h2>
+  <p class="section-sub fade-up">No more endless scrolling — find, save, and organize AI chats in seconds.</p>
   <div class="features-grid">
     <div class="feature-card fade-up">
       <div class="feature-icon">📁</div>
-      <h3>Folders</h3>
-      <p>Group conversations by project, client, or topic. Drag and drop to organize your workspace exactly how you think.</p>
+      <h3>ChatGPT Folders & More</h3>
+      <p>Add folders to ChatGPT, Claude, and Gemini. Group conversations by project, client, or topic. Drag and drop to organize.</p>
     </div>
     <div class="feature-card fade-up">
       <div class="feature-icon">🏷️</div>
@@ -612,7 +669,7 @@
     <div class="feature-card fade-up">
       <div class="feature-icon">🔍</div>
       <h3>Instant Search</h3>
-      <p>Find any conversation by title, tag, or folder in milliseconds — across all 7 platforms at once.</p>
+      <p>Save AI chats and find any conversation by title, tag, or folder in milliseconds — across all 7 platforms at once.</p>
     </div>
     <div class="feature-card fade-up">
       <div class="feature-icon">⭐</div>
